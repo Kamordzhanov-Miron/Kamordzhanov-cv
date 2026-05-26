@@ -74,7 +74,7 @@ const loadAchievements = () => {
   }
 };
 
-let achievementsState = loadAchievements();
+const achievementsState = loadAchievements();
 const achievementsList = document.getElementById('achievements-list');
 const achievementsProgress = document.getElementById('achievements-progress');
 const visitedSections = new Set();
