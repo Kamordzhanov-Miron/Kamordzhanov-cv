@@ -1,62 +1,397 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV — Your Name</title>
+    <meta
+      name="description"
+      content="Мирон Каморджанов — портфолио разработчика и резюме."
+    />
+    <title>Каморджанов Мирон</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main class="cv">
-      <header class="cv__header">
-        <h1>Your Name</h1>
-        <p class="cv__tagline">
-          One-line summary. Who you are, what you do, what you want next.
-        </p>
-        <ul class="cv__contacts">
-          <li><a href="mailto:you@example.com">you@example.com</a></li>
-          <li><a href="https://github.com/yourname">github.com/yourname</a></li>
-        </ul>
+    <div class="page-bg" aria-hidden="true">
+      <div class="page-bg__base"></div>
+      <div class="page-bg__blob page-bg__blob--1"></div>
+      <div class="page-bg__blob page-bg__blob--2"></div>
+      <div class="page-bg__blob page-bg__blob--3"></div>
+      <div class="page-bg__blob page-bg__blob--4"></div>
+      <div class="page-bg__grid"></div>
+      <div class="page-bg__noise"></div>
+    </div>
 
-        <!-- TODO: твой нестандартный элемент.
-             Пример: переключатель темы, anim, easter egg. -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          🌗
-        </button>
+    <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a class="nav__logo" href="#top"></a>
+      <button
+        class="nav__menu-btn"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label="Открыть меню"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about" data-label="About">Обо мне</a></li>
+        <li><a href="#experience" data-label="Experience">Путь</a></li>
+        <li><a href="#facts" data-label="Facts">Факты</a></li>
+        <li><a href="#skills" data-label="Skills">Навыки</a></li>
+        <li><a href="#quiz" data-label="Quiz">Квиз</a></li>
+        <li><a href="#achievements" data-label="Achievements">Квесты</a></li>
+      </ul>
+      <span class="nav__indicator" id="nav-indicator" aria-hidden="true"></span>
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Переключить цветовую тему"
+      >
+        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+      </button>
+    </nav>
+
+    <div class="scroll-spy" id="scroll-spy" aria-live="polite">
+      <span class="scroll-spy__eyebrow">Вы здесь</span>
+      <span class="scroll-spy__section" id="scroll-spy-section">Обо мне</span>
+    </div>
+
+    <main class="portfolio" id="top">
+      <header class="hero reveal">
+        <p class="hero__eyebrow">Портфолио</p>
+        <h1 class="hero__title">
+          <span class="hero__title-accent"> Каморджанов<br />
+            Мирон</span>
+        </h1>
+        <p class="hero__tagline">
+          
+        </p>
+        <p class="hero__typed" aria-live="polite">
+          <span class="hero__typed-label">Сфокусирован на</span>
+          <span id="typed-text" class="hero__typed-word"></span>
+          <span class="hero__cursor" aria-hidden="true">|</span>
+        </p>
+        <div class="accent-picker" id="accent-picker">
+          <span class="accent-picker__label">Выбери цвет</span>
+          <div class="accent-picker__swatches" role="group" aria-label="Акцентный цвет">
+            <button
+              type="button"
+              class="accent-picker__swatch is-active"
+              data-accent="blue"
+              aria-label="Синий акцент"
+              aria-pressed="true"
+            ></button>
+            <button
+              type="button"
+              class="accent-picker__swatch"
+              data-accent="violet"
+              aria-label="Фиолетовый акцент"
+              aria-pressed="false"
+            ></button>
+            <button
+              type="button"
+              class="accent-picker__swatch"
+              data-accent="teal"
+              aria-label="Бирюзовый акцент"
+              aria-pressed="false"
+            ></button>
+            <button
+              type="button"
+              class="accent-picker__swatch"
+              data-accent="coral"
+              aria-label="Коралловый акцент"
+              aria-pressed="false"
+            ></button>
+          </div>
+        </div>
+        <ul class="hero__contacts">
+          <li>
+            <button type="button" class="copy-email" id="copy-email" data-email="miron.kamordzhanov@example.com">
+              mkamordzhanov@gmail.com
+            </button>
+          </li>
+          <li>
+            <a href="https://github.com/Kamordzhanov-Miron" target="_blank" rel="noopener noreferrer"
+              >GitHub</a>
+          </li>
+        </ul>
       </header>
+      <section id="about" class="section reveal">
+        <h2 class="section__title"><span class="section__num">01</span> Обо мне</h2>
+        <div class="about">
+          <p class="about__lead">
+            Привет, я студент первого курса Политеха по направлению МОмАИС. Мне 19 лет, родился и вырос в Санкт-Петербурге. Интересуюсь современными технологиями, программированием и цифровым дизайном. Постоянно развиваюсь, изучаю новые инструменты и стараюсь совмещать техническое мышление с креативным подходом.
+          </p>
+          
+          <p>
+            Помимо учёбы, активно увлекаюсь спортом — он помогает мне держать дисциплину, концентрацию и баланс между работой и жизнью. Сейчас я постепенно строю свой путь в IT и открыт к новым проектам, знакомствам и возможностям для развития.
+          </p>
+        </div>
+      </section>
 
-      <section>
-        <h2>About</h2>
-        <p>
-          Two or three sentences. What you care about, what you've shipped,
-          where you're heading.
+      <section id="experience" class="section reveal">
+        <h2 class="section__title"><span class="section__num">02</span> Путь</h2>
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article>
+              <h3>Учеба в школе</h3>
+              <p class="timeline__meta">школа 534 · год выпуска - 2025</p>
+              <p>
+                Окончил государственное бюджетное общеобразовательное учреждение средняя общеобразовательная школа №534 с углубленным изучением английского языка имени Героя России Тимура Сиразетдинова Выборгского района Санкт-Петербурга
+              </p>
+            </article>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article>
+              <h3>Участие в олимпидах</h3>
+              <p class="timeline__meta"></p>
+              <p>
+                Активно участвовал в олимпиадах по программированию, математике и особенно физике. Развивал аналитическое мышление, навыки решения нестандартных задач и умение быстро находить эффективные решения в условиях ограниченного времени. Большой опыт олимпиадной подготовки сформировал сильную техническую базу, дисциплину и интерес к сложным инженерным и IT-направлениям.
+              </p>
+            </article>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <article>
+              <h3>Учёба в Политехе</h3>
+              <p class="timeline__meta">МОиАИС · 1 курс · 2025 — настоящее время</p>
+              <p>
+                Осваиваю фундаментальную математику, алгоритмы и архитектуру информационных систем. Закладываю прочную базу для проектирования сложных программных комплексов.
+              </p>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <section id="facts" class="section reveal">
+        <h2 class="section__title"><span class="section__num">03</span> Факты</h2>
+        <p class="facts__intro">
+          Нажми на карточку — она перевернётся и покажет подробности.
         </p>
+        <div class="fact-cards" id="fact-cards">
+          <button type="button" class="fact-card" aria-pressed="false">
+            <span class="fact-card__inner">
+              <span class="fact-card__face fact-card__front">
+                <span class="fact-card__emoji" aria-hidden="true">🎓</span>
+                <span class="fact-card__label">Учеба</span>
+                <span class="fact-card__title">Политех, МОиАИС</span>
+              </span>
+              <span class="fact-card__face fact-card__back">
+                Являюсь студентом 1 курса престижного направления «Математическое обеспечение и администрирование информационных систем» в Политихе.
+              </span>
+            </span>
+          </button>
+          <button type="button" class="fact-card" aria-pressed="false">
+            <span class="fact-card__inner">
+              <span class="fact-card__face fact-card__front">
+                <span class="fact-card__emoji" aria-hidden="true">💻</span>
+                <span class="fact-card__label">будущее</span>
+                <span class="fact-card__title">где я вижу себя в будущем?</span>
+              </span>
+              <span class="fact-card__face fact-card__back">
+                в ML и анализе данных
+              </span>
+            </span>
+          </button>
+          <button type="button" class="fact-card" aria-pressed="false">
+            <span class="fact-card__inner">
+              <span class="fact-card__face fact-card__front">
+                <span class="fact-card__emoji" aria-hidden="true">🚀</span>
+                <span class="fact-card__label">Спорт</span>
+                <span class="fact-card__title">Большой тенис</span>
+              </span>
+              <span class="fact-card__face fact-card__back">
+                Более 10-ти лет профессионально играю в большой теннис
+              </span>
+            </span>
+          </button>
+          <button type="button" class="fact-card" aria-pressed="false">
+            <span class="fact-card__inner">
+              <span class="fact-card__face fact-card__front">
+                <span class="fact-card__emoji" aria-hidden="true">🌱</span>
+                <span class="fact-card__label">Развитие</span>
+                <span class="fact-card__title">Изученные языки</span>
+              </span>
+              <span class="fact-card__face fact-card__back">
+                Знание 3-х яыков (Русский, Финский и Английский)
+              </span>
+            </span>
+          </button>
+        </div>
+        <p class="facts__counter" id="facts-counter">Открыто карточек: 0 / 4</p>
       </section>
 
-      <section>
-        <h2>Experience / Projects</h2>
-        <article>
-          <h3>Project / Role Title</h3>
-          <p class="cv__meta">Company / Context · 2024 — now</p>
-          <p>What you did. Why it mattered. What shipped.</p>
-        </article>
-        <article>
-          <h3>Another One</h3>
-          <p class="cv__meta">Context · 2023</p>
-          <p>Same shape. Keep it tight.</p>
-        </article>
+      <section id="skills" class="section reveal">
+        <h2 class="section__title"><span class="section__num">04</span> Навыки</h2>
+        <p class="skills__intro">
+          Стек, с которым работаю каждый день — и то, куда двигаюсь дальше.
+        </p>
+        <div class="skills-bento">
+          <article class="skills-panel skills-panel--core">
+            <header class="skills-panel__head">
+              <span class="skills-panel__icon" aria-hidden="true">⚡</span>
+              <div>
+                <h3>Основной стек</h3>
+                <p>База фронтенда</p>
+              </div>
+            </header>
+            <ul class="skill-grid">
+              <li class="skill-card" data-level="92">
+                <div class="skill-card__meter" aria-hidden="true">
+                  <span class="skill-card__pct">92</span>
+                </div>
+                <span class="skill-card__name">HTML &amp; CSS</span>
+              </li>
+              <li class="skill-card" data-level="88">
+                <div class="skill-card__meter" aria-hidden="true">
+                  <span class="skill-card__pct">88</span>
+                </div>
+                <span class="skill-card__name">Python</span>
+              </li>
+              <li class="skill-card" data-level="69">
+                <div class="skill-card__meter" aria-hidden="true">
+                  <span class="skill-card__pct">60</span>
+                </div>
+                <span class="skill-card__name">C++</span>
+              </li>
+              <li class="skill-card" data-level="80">
+                <div class="skill-card__meter" aria-hidden="true">
+                  <span class="skill-card__pct">80</span>
+                </div>
+                <span class="skill-card__name">JavaScript</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="skills-panel skills-panel--tools">
+            <header class="skills-panel__head">
+              <span class="skills-panel__icon" aria-hidden="true">🛠</span>
+              <div>
+                <h3>Инструменты и процессы</h3>
+                <p>Поддержка и выпуск кода</p>
+              </div>
+            </header>
+            <ul class="skill-rows">
+              <li class="skill-row" data-level="90">
+                <span class="skill-row__name">Git &amp; GitHub</span>
+                <span class="skill-row__track" aria-hidden="true">
+                  <span class="skill-row__fill"></span>
+                </span>
+                <span class="skill-row__pct">90%</span>
+              </li>
+              <li class="skill-row" data-level="85">
+                <span class="skill-row__name">Docker</span>
+                <span class="skill-row__track" aria-hidden="true">
+                  <span class="skill-row__fill"></span>
+                </span>
+                <span class="skill-row__pct">85%</span>
+              </li>
+              <li class="skill-row" data-level="82">
+                <span class="skill-row__name">CI/CD</span>
+                <span class="skill-row__track" aria-hidden="true">
+                  <span class="skill-row__fill"></span>
+                </span>
+                <span class="skill-row__pct">82%</span>
+              </li>
+              <li class="skill-row" data-level="100">
+                <span class="skill-row__name">AI</span>
+                <span class="skill-row__track" aria-hidden="true">
+                  <span class="skill-row__fill"></span>
+                </span>
+                <span class="skill-row__pct">100%</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="skills-panel skills-panel--growing">
+            <header class="skills-panel__head">
+              <span class="skills-panel__icon" aria-hidden="true">🌱</span>
+              <div>
+                <h3>Изучаю сейчас</h3>
+                <p>Ближайшие цели</p>
+              </div>
+            </header>
+            <ul class="skill-tags">
+              <li class="skill-tag">Java</li>
+              <li class="skill-tag">Python</li>
+              <li class="skill-tag">C</li>
+              <li class="skill-tag">SQL</li>
+              <li class="skill-tag">C++</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
-      <section>
-        <h2>Skills</h2>
-        <ul class="cv__skills">
-          <li>JavaScript</li>
-          <li>Git</li>
-          <li>CI/CD</li>
-          <li>Other thing you actually know</li>
-        </ul>
+      <section id="quiz" class="section reveal">
+        <h2 class="section__title"><span class="section__num">05</span> Квиз</h2>
+        <p class="quiz__intro">
+          Проверь, насколько внимательно ты читал резюме Мирона Каморджанова. Все ответы
+          спрятаны на этой странице.
+        </p>
+        <div class="quiz" id="quiz-app">
+          <div class="quiz__meta">
+            <span id="quiz-progress-text">Вопрос 1 из 5</span>
+            <span id="quiz-score-text">Счёт: 0</span>
+          </div>
+          <div class="quiz__bar" aria-hidden="true">
+            <div class="quiz__bar-fill" id="quiz-bar-fill"></div>
+          </div>
+          <div id="quiz-play" class="quiz__play">
+            <p class="quiz__question" id="quiz-question"></p>
+            <div class="quiz__options" id="quiz-options" role="group" aria-labelledby="quiz-question"></div>
+            <p class="quiz__feedback" id="quiz-feedback" hidden></p>
+            <button
+              type="button"
+              class="btn btn--primary quiz__next"
+              id="quiz-next"
+              hidden
+            >
+              Следующий вопрос
+            </button>
+          </div>
+          <div id="quiz-result" class="quiz__result" hidden>
+            <p class="quiz__result-title" id="quiz-result-title"></p>
+            <p class="quiz__result-text" id="quiz-result-text"></p>
+            <button type="button" class="btn btn--ghost" id="quiz-restart">
+              Пройти ещё раз
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="achievements" class="section reveal">
+        <h2 class="section__title"><span class="section__num">06</span> Достижения</h2>
+        <p class="achievements__intro">
+          Исследуй сайт — открывай бейджи за действия: смена темы, викторина, карточки и
+          другое.
+        </p>
+        <ul class="achievements" id="achievements-list" aria-label="Бейджи достижений"></ul>
+        <p class="achievements__progress" id="achievements-progress">0 / 6 разблокировано</p>
       </section>
     </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Мирон Каморджанов</p>
+      <button class="footer__top" id="back-to-top" type="button" aria-label="Наверх">
+        ↑ Наверх
+      </button>
+    </footer>
 
     <script type="module" src="./src/main.js"></script>
   </body>
